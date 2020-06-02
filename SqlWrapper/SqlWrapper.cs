@@ -1,11 +1,11 @@
-﻿using System;
+﻿using SqlWrapper.Models;
+using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
 
 namespace SqlWrapper
 {
-    public class SqlWrapper<T> : ISqlWrapper<T> where T : class, new()
+    public class SqlWrapper : ISqlWrapper
     {
         private readonly SqlConnection _sqlConnection;
 
@@ -14,43 +14,86 @@ namespace SqlWrapper
             _sqlConnection = new SqlConnection(connectionString);
         }
 
-        public void Create(T data)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete()
-        {
-            throw new NotImplementedException();
-        }
-
-        // TODO:
-        public void Read()
+        public void Create(Expense data)
         {
             _sqlConnection.Open();
-            List<T> result = new List<T>();
 
+
+
+            _sqlConnection.Close();
+        }
+
+        public void Delete(Expense data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Expense Read(int id)
+        {
+            _sqlConnection.Open();
+
+            Expense result = null;
             using (var command = new SqlCommand())
             {
                 command.Connection = _sqlConnection;
-                command.CommandType = CommandType.Text;
-                command.CommandText =
+                command.CommandType = System.Data.CommandType.Text;
+                command.CommandText = 
                     $@"
-                        SELECT *
-                        FROM {nameof(T)}
+                        Select *
+                        From Expenses
+                        Where Id = {id}
                     ";
 
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    
+                    result = new Expense
+                    {
+                        Id = reader.GetInt32(0),
+                        Name = reader.GetString(1),
+                        Comment = reader.GetString(2)
+                    };
                 }
             }
 
             _sqlConnection.Close();
+
+            return result;
         }
 
-        public void Update()
+        public IList<Expense> Read()
+        {
+            _sqlConnection.Open();
+
+            List<Expense> result = new List<Expense>();
+            using (var command = new SqlCommand())
+            {
+                command.Connection = _sqlConnection;
+                command.CommandType = System.Data.CommandType.Text;
+                command.CommandText =
+                    $@"
+                        Select *
+                        From Expenses
+                    ";
+
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    result.Add(new Expense
+                    {
+                        Id = reader.GetInt32(0),
+                        Name = reader.GetString(1),
+                        Comment = reader.GetString(2)
+                    }); 
+                }
+            }
+
+            _sqlConnection.Close();
+
+            return result;
+        }
+
+        public void Update(Expense data)
         {
             throw new NotImplementedException();
         }
@@ -59,7 +102,7 @@ namespace SqlWrapper
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            
         }
 
         #endregion

@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
-using Expenses.API.Models;
+﻿using System;
+using System.Collections.Generic;
 using Expenses.API.Services;
 using Microsoft.AspNetCore.Mvc;
+using SqlWrapper.Models;
 
 namespace Expenses.API.Controllers
 {
@@ -28,6 +29,13 @@ namespace Expenses.API.Controllers
         public IEnumerable<Expense> Get()
         {
             return _expensesService.Get();
+        }
+
+        [HttpGet]
+        [Route("{id}")]
+        public Expense Get(int id)
+        {
+            return _expensesService.Get(id);
         }
 
         [HttpGet]

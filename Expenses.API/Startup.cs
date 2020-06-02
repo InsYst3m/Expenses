@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SqlWrapper;
 
 namespace Expenses.API
 {
@@ -20,6 +21,8 @@ namespace Expenses.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IExpensesService, ExpensesService>();
+            services.AddTransient<ISqlWrapper>(
+                serviceProvider => new SqlWrapper.SqlWrapper(@"Data Source=DESKTOP-6KQ96MP\MSSQLSERVER2017;Initial Catalog=ExpensesGod;Integrated Security=True"));
 
             services.AddControllers();
         }

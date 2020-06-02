@@ -1,4 +1,4 @@
-﻿using Expenses.API.Models;
+﻿using SqlWrapper.Models;
 using System;
 using System.Collections.Generic;
 
@@ -7,7 +7,7 @@ namespace Expenses.API.Services
     public interface IExpensesService
     {
         void Add(Expense expense);
-        Expense Get(Guid id);
+        Expense Get(int id);
         IEnumerable<Expense> Get();
     }
 }
