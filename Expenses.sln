@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Expenses.API", "Expenses.API\Expenses.API.csproj", "{C3EAEE3C-5BDA-4A9F-B3D1-6549DE87AA41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Expenses.API", "Expenses.API\Expenses.API.csproj", "{C3EAEE3C-5BDA-4A9F-B3D1-6549DE87AA41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlWrapper", "SqlWrapper\SqlWrapper.csproj", "{AB1B3638-031B-4F8B-93EC-F60540250BE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlWrapper", "SqlWrapper\SqlWrapper.csproj", "{AB1B3638-031B-4F8B-93EC-F60540250BE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

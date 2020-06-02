@@ -61,7 +61,7 @@ namespace SqlWrapper
             return result;
         }
 
-        public IList<Expense> Read()
+        public IEnumerable<Expense> Read()
         {
             _sqlConnection.Open();
 

@@ -1,5 +1,4 @@
 ﻿using SqlWrapper.Models;
-using System;
 using System.Collections.Generic;
 
 namespace Expenses.API.Services

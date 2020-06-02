@@ -8,7 +8,7 @@ namespace SqlWrapper
     {
         void Create(Expense data);
         Expense Read(int id);
-        IList<Expense> Read();
+        IEnumerable<Expense> Read();
         void Update(Expense data);
         void Delete(Expense data);
     }

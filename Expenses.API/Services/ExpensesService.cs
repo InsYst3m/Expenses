@@ -28,6 +28,5 @@ namespace Expenses.API.Services
         {
             return _sqlWrapper.Read();
         }
-
     }
 }
