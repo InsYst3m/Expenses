@@ -24,6 +24,17 @@ namespace Expenses.API
             services.AddTransient<ISqlWrapper>(
                 serviceProvider => new SqlWrapper.SqlWrapper(@"Data Source=DESKTOP-6KQ96MP\MSSQLSERVER2017;Initial Catalog=ExpensesGod;Integrated Security=True"));
 
+            //services.AddCors(options => 
+            //{
+            //    options.AddPolicy(name: "MySpecificCors",
+            //        builder => 
+            //        {
+            //            builder.WithOrigins("https://localhost:44379/", "https://localhost:44340/")
+            //            .AllowAnyMethod()
+            //            .AllowAnyHeader();
+            //        });
+            //});
+
             services.AddControllers();
         }
 
@@ -38,6 +49,8 @@ namespace Expenses.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(builder => builder.AllowAnyOrigin());
 
             app.UseAuthorization();
 

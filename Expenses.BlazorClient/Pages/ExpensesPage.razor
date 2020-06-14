@@ -1,10 +1,13 @@
 ﻿@page "/expenses"
-@using Expenses.BlazorClient.Components
+@inject HttpClient HttpClient
 
 <h3>ExpensesPage</h3>
 
-<TableComponent />
+<TableComponent Expenses=@ExpenseViewModels />
 
 @code {
+    private ExpenseViewModel[] ExpenseViewModels;
 
+    protected override async Task OnInitializedAsync() =>
+         ExpenseViewModels = await HttpClient.GetFromJsonAsync<ExpenseViewModel[]>("https://localhost:44340/expenses");
 }

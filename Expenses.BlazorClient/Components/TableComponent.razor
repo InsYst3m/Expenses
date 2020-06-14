@@ -1,21 +1,21 @@
 ﻿<table>
-    <tr>
-        <td style="border: 1px solid black">Column 1</td>
-        <td style="border: 1px solid black">Column 2</td>
-        <td style="border: 1px solid black">Column 3</td>
-    </tr>
-    <tr>
-        <td style="border: 1px solid black">Column 1</td>
-        <td style="border: 1px solid black">Column 2</td>
-        <td style="border: 1px solid black">Column 3</td>
-    </tr>
-    <tr>
-        <td style="border: 1px solid black">Column 1</td>
-        <td style="border: 1px solid black">Column 2</td>
-        <td style="border: 1px solid black">Column 3</td>
-    </tr>
+    @if (expenses == null)
+    {
+        <tr>No expenses found.</tr>
+    }
+    else
+    {
+        foreach (var expense in expenses)
+        {
+            <tr>
+                <td style="border: 1px solid black">@expense.Name</td>
+                <td style="border: 1px solid black">@expense.Comment</td>
+            </tr>
+        }
+    }
 </table>
 
 @code {
-
+    [Parameter]
+    public ExpenseViewModel[] expenses { get; set; }
 }
