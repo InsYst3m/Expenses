@@ -1,0 +1,13 @@
+﻿@page "/"
+@inject NavigationManager NavigationManager
+
+<h1>Hello, world! This is a perfect Expenses app.</h1>
+
+<button @onclick="NavigateToExpensesPage">Expenses Page</button>
+
+@code {
+    private void NavigateToExpensesPage()
+    {
+        NavigationManager.NavigateTo("expenses");
+    }
+}
