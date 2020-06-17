@@ -1,16 +1,26 @@
-﻿<table>
+﻿<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>@nameof(ExpenseViewModel.Name)</th>
+            <th>@nameof(ExpenseViewModel.Comment)</th>
+        </tr>
+    </thead>
     @if (expenses == null)
     {
         <tr>No expenses found.</tr>
     }
     else
     {
-        foreach (var expense in expenses)
+        for (int i = 0; i < expenses.Length; i++)
         {
-            <tr>
-                <td style="border: 1px solid black">@expense.Name</td>
-                <td style="border: 1px solid black">@expense.Comment</td>
-            </tr>
+            <tbody>
+                <tr>
+                    <td scope="row">@i</td>
+                    <td>@expenses[i].Name</td>
+                    <td>@expenses[i].Comment</td>
+                </tr>
+            </tbody>
         }
     }
 </table>

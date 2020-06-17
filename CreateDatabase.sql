@@ -5,8 +5,9 @@ Go
 
 Create table Expenses (
 	[Id] INT Primary key not null,
-	[Name] nvarchar(60) not null,
-	[Comment] nvarchar(255) not null
+	[Name] NVARCHAR(60) not null,
+	[Comment] NVARCHAR(255) not null,
+	[Price] MONEY not null 
 );
 
 Insert into Expenses values (1, 'test1', 'test comment 1')

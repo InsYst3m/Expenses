@@ -16,11 +16,7 @@ namespace SqlWrapper
 
         public void Create(Expense data)
         {
-            _sqlConnection.Open();
-
-
-
-            _sqlConnection.Close();
+            throw new NotImplementedException();
         }
 
         public void Delete(Expense data)
@@ -39,7 +35,7 @@ namespace SqlWrapper
                 command.CommandType = System.Data.CommandType.Text;
                 command.CommandText = 
                     $@"
-                        Select *
+                        Select Name, Comment
                         From Expenses
                         Where Id = {id}
                     ";
@@ -72,7 +68,7 @@ namespace SqlWrapper
                 command.CommandType = System.Data.CommandType.Text;
                 command.CommandText =
                     $@"
-                        Select *
+                        Select Name, Comment
                         From Expenses
                     ";
 

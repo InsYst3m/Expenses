@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Expenses.API.Services;
+using Expenses.Domain.Entities;
+using Expenses.Domain.UnitOfWork;
 using Microsoft.AspNetCore.Mvc;
-using SqlWrapper.Models;
 
 namespace Expenses.API.Controllers
 {
@@ -9,17 +9,17 @@ namespace Expenses.API.Controllers
     [Route("[controller]")]
     public class ExpensesController : ControllerBase
     {
-        private readonly IExpensesService _expensesService;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public ExpensesController(IExpensesService expensesService)
+        public ExpensesController(IUnitOfWork unitOfWork)
         {
-            _expensesService = expensesService;
+            _unitOfWork = unitOfWork;
         }
 
         [HttpPost]
         public IActionResult Set(Expense expense)
         {
-            _expensesService.Add(expense);
+            _unitOfWork.Expenses.Add(expense);
 
             return Ok();
         }
@@ -27,14 +27,14 @@ namespace Expenses.API.Controllers
         [HttpGet]
         public IEnumerable<Expense> Get()
         {
-            return _expensesService.Get();
+            return _unitOfWork.Expenses.Get();
         }
 
         [HttpGet]
         [Route("{id}")]
         public Expense Get(int id)
         {
-            return _expensesService.Get(id);
+            return _unitOfWork.Expenses.Get(id);
         }
 
         [HttpGet]

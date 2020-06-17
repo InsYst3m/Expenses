@@ -1,10 +1,8 @@
-using Expenses.API.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SqlWrapper;
 
 namespace Expenses.API
 {
@@ -20,21 +18,6 @@ namespace Expenses.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IExpensesService, ExpensesService>();
-            services.AddTransient<ISqlWrapper>(
-                serviceProvider => new SqlWrapper.SqlWrapper(@"Data Source=DESKTOP-6KQ96MP\MSSQLSERVER2017;Initial Catalog=ExpensesGod;Integrated Security=True"));
-
-            //services.AddCors(options => 
-            //{
-            //    options.AddPolicy(name: "MySpecificCors",
-            //        builder => 
-            //        {
-            //            builder.WithOrigins("https://localhost:44379/", "https://localhost:44340/")
-            //            .AllowAnyMethod()
-            //            .AllowAnyHeader();
-            //        });
-            //});
-
             services.AddControllers();
         }
 
