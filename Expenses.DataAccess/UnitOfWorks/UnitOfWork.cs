@@ -1,8 +1,7 @@
-﻿using Expenses.DataAccess.Repositories;
-using Expenses.Domain.IRepositories;
-using Expenses.Domain.UnitOfWork;
+﻿using Expenses.Domain.IRepositories;
+using Expenses.Domain.UnitOfWorks;
 
-namespace Expenses.DataAccess.UnitOfWork
+namespace Expenses.DataAccess.UnitOfWorks
 {
     public class UnitOfWork : IUnitOfWork
     {
@@ -10,10 +9,10 @@ namespace Expenses.DataAccess.UnitOfWork
 
         public IExpensesRepository Expenses { get; private set; }
 
-        public UnitOfWork(ExpensesDbContext context)
+        public UnitOfWork(ExpensesDbContext context, IExpensesRepository expensesRepository)
         {
             _context = context;
-            Expenses = new ExpensesRepository(_context);
+            Expenses = expensesRepository;
         }
 
         public int Complete()

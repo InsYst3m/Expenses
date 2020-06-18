@@ -1,7 +1,7 @@
 ﻿using Expenses.Domain.IRepositories;
 using System;
 
-namespace Expenses.Domain.UnitOfWork
+namespace Expenses.Domain.UnitOfWorks
 {
     public interface IUnitOfWork : IDisposable
     {

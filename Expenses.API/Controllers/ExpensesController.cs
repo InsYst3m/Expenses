@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Expenses.Domain.Entities;
-using Expenses.Domain.UnitOfWork;
+using Expenses.Domain.UnitOfWorks;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Expenses.API.Controllers
